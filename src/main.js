@@ -1,14 +1,14 @@
 const Koa = require('koa');
+const { APP_PORT } = require('./config/config.defult')
+
+
 const app = new Koa();
-
-//配置路由
-
 
 //添加中间件
 app.use(async (ctx, next) => {
   ctx.body = 'hello koa';
 })
 
-app.listen(3000, () => {
-  console.log('serve is runing on http://localhost:3000')
+app.listen(APP_PORT, () => {
+  console.log(`serve is runing on http://localhost:${APP_PORT}`)
 })
