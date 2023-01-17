@@ -1,7 +1,16 @@
-class userController {
+const { createUser } = require('../service/user.service')
+
+class UserController {
   async register (ctx, next) {
-    ctx.body = '用户注册成功'
+    const { username, password } = ctx.reqest.body
+    const res = await createUser(username, password)
+    // console.log(res);
+    ctx.body = res
+  }
+
+  async login (ctx, next) {
+    ctx.body = '登录'
   }
 }
 
-module.exports = new userController()
+module.exports = new UserController()
