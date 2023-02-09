@@ -1,4 +1,4 @@
-const { DataTypes } = require('sequelize')
+const { DataTypes } = require('sequelize') // 数据库操作
 
 const seq = require('../db/seq')
 

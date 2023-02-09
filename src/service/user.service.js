@@ -1,8 +1,10 @@
+//操作数据库
 const User = require('../model/user.model')
 
 class UserService {
+
+  // 用户注册
   async createUser (username, password) {
-    // 用户注册
     const res = await User.create({ username, password })
     return res.dataValues
   }
