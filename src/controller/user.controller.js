@@ -12,13 +12,12 @@ class UserController {
         result: res,
       }
     } catch (err) {
-      console.log(err);
       ctx.app.emit('error', userRegisterError, ctx)
     }
   }
 
   async login (ctx, next) {
-    ctx.body = '登录'
+    ctx.body = '登录成功'
   }
 }
 
