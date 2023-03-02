@@ -1,13 +1,25 @@
-const Router = require('koa-router')
+const Router = require("koa-router");
 
-const { userValidator, verifyUser, crpytPassword } = require('../middleware/user.mddleware')
-const { register, login } = require('../controller/user.controller')
+const {
+  userValidator,
+  verifyUser,
+  crpytPassword,
+  verifyLogin,
+} = require("../middleware/user.mddleware");
+const { auth } = require("../middleware/auth.middleware");
+const {
+  register,
+  login,
+  changePassword,
+} = require("../controller/user.controller");
 
-const router = new Router({ prefix: '/' })
+const router = new Router({ prefix: "/user" });
 
+// 注册接口
+router.post("/register", userValidator, verifyUser, crpytPassword, register);
+// 登录接口
+router.post("/login", userValidator, verifyLogin, login);
+// 修改密码接口
+router.patch("/changepwd", auth, crpytPassword, changePassword);
 
-//注册接口
-router.post('/register', userValidator, verifyUser, crpytPassword, register)
-router.post('/login', login)
-
-module.exports = router
+module.exports = router;
